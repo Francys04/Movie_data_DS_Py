@@ -52,7 +52,7 @@ base_path = "https://en.wikipedia.org/"
 movie_info_list = []
 
 for index, movie in enumerate(movies):
-    if index == 20:
+    if index == 147:
         break
     try:
         relative_path = movie['href']
