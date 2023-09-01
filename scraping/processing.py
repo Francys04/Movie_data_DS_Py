@@ -40,3 +40,4 @@ for index, row in enumerate(info_rows):
         movie_info[content_key] = content_value
 print(movie_info)
 # {'title': 'Gladiator', 'Directed by': 'Ridley Scott', 'Screenplay by': '\nDavid Franzoni\nJohn Logan\nWilliam ...
+
