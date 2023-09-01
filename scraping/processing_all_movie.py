@@ -8,8 +8,15 @@ import requests
 def get_content_value(row_data):
     if row_data.find("li"):
         return [li.get_text(" ", strip=True).replace("\xa0", " ") for li in row_data.find_all("li")]
+    elif row_data.find("br"):
+        return [text for text in row_data.stripped_strings]
     else:
-        return row_data.get_text().replace("\xa0", " ")
+        return row_data.get_text(" ", strip=True).replace("\xa0", " ")
+
+
+def clean_tags(soup):
+    for tag in soup.find_all(["sup", "span"]):
+        tag.decompose()
 
 
 def get_info_box(url):
@@ -23,18 +30,22 @@ def get_info_box(url):
     # print(info_box.prettify())
     info_rows = info_box.find_all("tr")
 
+    clean_tags(soup)
+
     movie_info = {}
     for index, row in enumerate(info_rows):
         if index == 0:
             movie_info['title'] = row.find("th").get_text(" ", strip=True)
-        elif index == 1:
-            continue
         else:
-            content_key = row.find("th").get_text(" ", strip=True)
-            content_value = get_content_value(row.find("td"))
-            movie_info[content_key] = content_value
+            header = row.find("th")
+            if header:
+                content_key = row.find("th").get_text(" ", strip=True)
+                content_value = get_content_value(row.find("td"))
+                movie_info[content_key] = content_value
     return movie_info
 
+
+print(get_info_box("https://en.wikipedia.org/wiki/Gladiator_(2000_film)"))
 
 '''
 # for all movies'''
@@ -52,8 +63,8 @@ base_path = "https://en.wikipedia.org/"
 movie_info_list = []
 
 for index, movie in enumerate(movies):
-    if index == 147:
-        break
+    if index % 10 == 0:
+        print(index)
     try:
         relative_path = movie['href']
         full_path = base_path + relative_path
@@ -64,5 +75,4 @@ for index, movie in enumerate(movies):
     except Exception as e:
         print(movie.get_text())
         print(e)
-print(len(movie_info_list))
-
+# print(len(movie_info_list))
