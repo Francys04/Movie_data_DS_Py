@@ -45,7 +45,7 @@ def get_info_box(url):
     return movie_info
 
 
-print(get_info_box("https://en.wikipedia.org/wiki/Gladiator_(2000_film)"))
+# print(get_info_box("https://en.wikipedia.org/wiki/Gladiator_(2000_film)"))
 
 '''
 # for all movies'''

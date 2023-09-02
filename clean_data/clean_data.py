@@ -39,6 +39,6 @@ def min_to_int(running_time):
 for movie in movie_info_list:
     movie['Running time (int)'] = min_to_int(movie.get('Running time', 'N/A'))
 
-print([movie.get('Running time (int)', 'N/A') for movie in movie_info_list])
-
-print(movie_info_list[-11])
+# print([movie.get('Running time (int)', 'N/A') for movie in movie_info_list])
+#
+# print(movie_info_list[-11])  # Openheimera movie analys from this list
