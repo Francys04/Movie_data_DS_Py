@@ -1,9 +1,16 @@
-import pytest
+import pytest  # This line imports the pytest library, which is a popular testing framework for Python.
 from procesing_budget import money_conversion
+
+"""This line imports the money_conversion function from a module named procesing_budget.
+ It suggests that the module contains the function to be tested."""
 
 
 def test_standard():
     assert money_conversion("$3 million") == 3000000
+
+
+"""This line defines a test function named test_standard. 
+Test functions in pytest typically start with the word "test" and contain one or more test cases"""
 
 
 def test_standard_double_digit():

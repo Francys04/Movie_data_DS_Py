@@ -24,8 +24,10 @@ except FileNotFoundError:
 except json.JSONDecodeError as e:
     print(f"Error decoding JSON: {e}")
 
-
 # 85 minutes
+"""This line defines a Python function named min_to_int. 
+It takes one argument, running_time, which represents the running time of a movie in minutes."""
+
 
 def min_to_int(running_time):
     if running_time == 'N/A':

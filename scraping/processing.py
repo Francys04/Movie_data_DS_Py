@@ -1,5 +1,6 @@
-from bs4 import BeautifulSoup as bs
-import requests
+from bs4 import BeautifulSoup as bs  # Python library for web scraping purposes to pull the data out of HTML
+# and XML files
+import requests  # Imports the requests library, which is used to make HTTP requests to fetch web page content.
 
 '''Load the web page'''
 
